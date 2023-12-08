@@ -1,0 +1,19 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.base.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.controls.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.media.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.swing.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.web.jar",
+        "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx-swt.jar",
+        "c:\\Program Files\\NetLogo 6.2.2\\app\\netlogo-6.2.2.jar",
+        "c:\\Users\\krist\\Downloads\\jfxtras-all-10.0-r1.jar",
+        "c:\\Users\\krist\\Downloads\\controlsfx-11.1.2.jar"
+    ],
+    "java.checkstyle.configuration": "/sun_checks.xml"
+}

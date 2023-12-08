@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane style="-fx-background-color: #e5e5e5;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.szenarioAnalyticsController">
+    <children>
+      <ToolBar maxHeight="40.0" maxWidth="-Infinity" prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <SplitMenuButton fx:id="chooseDataMenu" mnemonicParsing="false" onAction="#onComparison" prefHeight="28.0" prefWidth="143.0" text="Compare data">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Compare.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Here you can choose the simulation data you want to compare. If it's empty, run the simulation first." />
+               </tooltip>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </SplitMenuButton>
+            <Button mnemonicParsing="false" onAction="#onDeleteBtnClicked" style="-fx-border-radius: 2px; -fx-border-color: #f08080;" text="Delete data">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="deletedLabel" text="Deleted!" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="clearAll" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#onBtnClearAllClicked" style="-fx-border-color: #f08080; -fx-border-radius: 2px;" text="Clear all charts">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Delete%20Graph%20Report.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+        </items>
+      </ToolBar>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" layoutY="59.0" pannable="true" prefHeight="794.0" prefWidth="1215.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <content>
+            <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #e5e5e5;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextFlow minHeight="14.0" minWidth="100.0" prefHeight="28.0" prefWidth="288.0">
+                     <children>
+                        <Text fill="#797676" strokeType="OUTSIDE" strokeWidth="0.0" text="Currently comparing: ">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="currComparingLabel" textFill="#797676">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextFlow>
+                  <GridPane prefHeight="356.0" prefWidth="1132.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="800.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="347.0" prefWidth="952.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
+                           </GridPane.margin>
+                           <children>
+                              <LineChart fx:id="comparisonChart" animated="false" createSymbols="false" prefHeight="374.0" prefWidth="1170.0" title="Time Series Comparison" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <xAxis>
+                                    <NumberAxis label="Days" side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="Reporter" side="LEFT" />
+                                 </yAxis>
+                                 <padding>
+                                    <Insets bottom="5.0" right="10.0" top="15.0" />
+                                 </padding>
+                              </LineChart>
+                              <Button fx:id="refreshBtn1" alignment="TOP_CENTER" layoutX="71.0" layoutY="10.0" minWidth="50.0" mnemonicParsing="false" onAction="#onBtnRefresh1Clicked" style="-fx-border-color: #f08080; -fx-border-radius: 2px;" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Delete%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Clear this chart" />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <MenuButton fx:id="graphSelector" mnemonicParsing="false" onAction="#getChosenGraphs" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <items>
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="eggs" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="larvae" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="in hive bees" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="foragers" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="workers" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="brood" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="infected bees" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="total mites" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="phoretic mites healthy" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="phoretic mites infected" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="mite fall x 10" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="mites in cells" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="pollen [kg] x 20" />
+                                    <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" text="honey store [kg] " />
+                                 </items>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Choose.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Select which graphs you'd like to compare in the chart." />
+                                 </tooltip>
+                              </MenuButton>
+                              <Button layoutX="848.0" layoutY="16.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportLineChartCSV" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Export%20CSV.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as CSV file." />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="891.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportLineChartPNG" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Download%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as picture" />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </GridPane>
+                  <GridPane prefHeight="318.0" prefWidth="1132.0" GridPane.rowIndex="1">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="559.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="560.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="361.0" prefWidth="620.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <children>
+                              <BarChart fx:id="barChart" alternativeColumnFillVisible="true" animated="false" legendSide="RIGHT" prefHeight="361.0" prefWidth="702.0" title="Last Value Comparison" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="28.0" side="LEFT" />
+                                </yAxis>
+                                 <padding>
+                                    <Insets bottom="5.0" right="10.0" top="15.0" />
+                                 </padding>
+                              </BarChart>
+                              <Button fx:id="refreshBtn2" alignment="TOP_CENTER" layoutX="14.0" layoutY="11.0" minWidth="50.0" mnemonicParsing="false" onAction="#onBtnRefresh2Clicked" style="-fx-border-radius: 2px; -fx-border-color: #f08080;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Delete%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Clear this chart" />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="541.0" layoutY="3.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportBarChart1PNG" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Download%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as picture" />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="503.0" layoutY="12.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportBarChart1CSV" prefHeight="28.0" prefWidth="50.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="11.0">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Export%20CSV.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as CSV file." />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;" GridPane.columnIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <children>
+                              <BarChart fx:id="barChart2" animated="false" legendSide="RIGHT" prefHeight="402.0" prefWidth="580.0" title="Last Value Comparison" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                                 <padding>
+                                    <Insets bottom="5.0" right="10.0" top="15.0" />
+                                 </padding>
+                              </BarChart>
+                              <Button layoutX="364.0" layoutY="17.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportBarChart2CSV" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Export%20CSV.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as CSV file." />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button layoutX="414.0" layoutY="16.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportBarChart2PNG" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Download%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as picture" />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="refreshBtn3" alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" minWidth="50.0" mnemonicParsing="false" onAction="#onBtnRefresh3Clicked" style="-fx-border-radius: 2px; -fx-border-color: #f08080;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Delete%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Clear this chart" />
+                                 </tooltip>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </padding>
+            </GridPane>
+         </content>
+      </ScrollPane>
+    </children>
+</AnchorPane>

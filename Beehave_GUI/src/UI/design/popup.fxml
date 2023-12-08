@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="455.0" style="-fx-background-color: #fef5d9;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.popupController">
+   <children>
+      <ImageView fitHeight="96.0" fitWidth="180.0" layoutX="122.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.91509246826172" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="10.0">
+         <image>
+            <Image url="@Icons/BEEHAVE.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="startingLabelPopup" layoutX="28.0" layoutY="127.0" prefHeight="29.0" prefWidth="400.0" text="The Beehave Model is being loaded. Please wait a few seconds..." AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="27.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progressbar" layoutX="24.0" layoutY="102.0" prefHeight="18.0" prefWidth="381.0" style="-fx-accent: #56585a;" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</AnchorPane>

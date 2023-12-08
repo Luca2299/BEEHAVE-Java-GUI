@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.customSettingsController">
+   <children>
+      <ToolBar maxHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <ComboBox fx:id="szenarioComboBox" onAction="#onInputCanged" prefHeight="25.0" prefWidth="197.0" promptText="Choose from saved setttings">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <tooltip>
+                  <Tooltip text="Currently active setting." />
+               </tooltip>
+            </ComboBox>
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onDeleteBtnClicked" style="-fx-border-color: #f08080; -fx-border-radius: 2px;" text="Delete setting">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="deletedLabel" text="Deleted!" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane minHeight="0.0" minWidth="0.0" HBox.hgrow="ALWAYS" />
+            <Label fx:id="savedLabel" prefHeight="20.0" prefWidth="41.0" text="Saved!" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#onSaveBtnClicked" text="Save setting">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Save.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+        </items>
+         <padding>
+            <Insets bottom="5.0" left="20.0" right="30.0" top="5.0" />
+         </padding>
+      </ToolBar>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" layoutY="39.0" pannable="true" style="-fx-fit-to-height: true; -fx-fit-to-width: true;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+         <content>
+            <AnchorPane prefHeight="681.0" prefWidth="1048.0" style="-fx-background-color: #e5e5e5;">
+                <children>
+                    <VBox layoutX="30.0" layoutY="30.0" prefHeight="345.0" prefWidth="411.0" style="-fx-border-color: #cdcdcd; -fx-border-radius: 10px; -fx-background-color: #f3f3f3; -fx-background-radius: 10px;">
+                        <children>
+                            <GridPane prefHeight="10.0" prefWidth="394.0">
+                                <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="43.0" minWidth="10.0" prefWidth="40.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="226.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="125.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Icons/NoMite.png" />
+                                    </image>
+                                </ImageView>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drone Brood Removal Options" wrappingWidth="200.5634765625" GridPane.columnIndex="1">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <Button disable="true" mnemonicParsing="false" text="Restore default" visible="false" GridPane.columnIndex="2">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                            <Image url="@Icons/Replay.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                </children>
+                            </GridPane>
+                            <Separator>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></Separator>
+                            <GridPane vgap="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.5" minWidth="10.0" prefWidth="149.5" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="222.5" minWidth="10.0" prefWidth="204.5" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                                <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Drone brood removal:" wrappingWidth="154.048828125">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                                <ToggleButton fx:id="DB_RemovalTglBtn" maxHeight="25.0" maxWidth="50.0" minWidth="43.0" mnemonicParsing="false" onAction="#toggleBtnClicked" prefHeight="25.0" prefWidth="50.0" selected="true" text="On" GridPane.columnIndex="1">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ToggleButton>
+                                </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="20.0" right="20.0" top="10.0" />
+                           </VBox.margin>
+                            </GridPane>
+                        <Pane minWidth="30.0" prefHeight="30.0" prefWidth="394.0">
+                           <children>
+                              <Text fill="#7a7171" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="At least 4 Removal days, sorted in ascending order.">
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Pane>
+                            <GridPane prefHeight="184.0" prefWidth="354.0" vgap="5.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="256.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                                <children>
+                                <Label text="1. Removal day:" />
+                                <Label text="2. Removal day:" GridPane.rowIndex="1" />
+                                <Label text="3. Removal day:" GridPane.rowIndex="2" />
+                                <Label text="4. Removal day:" GridPane.rowIndex="3" />
+                                <Label text="5. Removal day:" GridPane.rowIndex="4" />
+                                <DatePicker fx:id="RemovalDay1" onAction="#chooseDate_DB" prefHeight="25.0" prefWidth="200.0" promptText="dd.mm.yyyy " showWeekNumbers="true" GridPane.columnIndex="1" />
+                                <DatePicker fx:id="RemovalDay2" onAction="#chooseDate_DB" prefHeight="25.0" prefWidth="200.0" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <DatePicker fx:id="RemovalDay3" onAction="#chooseDate_DB" prefHeight="25.0" prefWidth="200.0" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <DatePicker fx:id="RemovalDay4" onAction="#chooseDate_DB" prefHeight="25.0" prefWidth="200.0" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <DatePicker fx:id="RemovalDay5" onAction="#chooseDate_DB" prefHeight="25.0" prefWidth="200.0" promptText="dd.mm.yyyy" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                </children>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="5.0" />
+                           </VBox.margin>
+                            </GridPane>
+                        <Pane prefHeight="30.0" prefWidth="366.0">
+                           <children>
+                              <Label fx:id="DB_Warning" layoutX="18.0" layoutY="3.0" text="Removal day has to be between 01.01.2023  and 01.01.2023." textFill="#ee0505" visible="false" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Pane>
+                        </children>
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                    </VBox>
+                    <VBox layoutX="30.0" layoutY="392.0" prefHeight="260.0" prefWidth="411.0" style="-fx-border-color: #cdcdcd; -fx-border-radius: 10px; -fx-background-color: #f3f3f3; -fx-background-radius: 10px;">
+                        <children>
+                            <GridPane prefHeight="23.0" prefWidth="393.0">
+                                <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="66.0" minWidth="10.0" prefWidth="35.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="241.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="125.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Icons/NoMite.png" />
+                                    </image>
+                                </ImageView>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oxalic Acid Treatment Options" wrappingWidth="196.9072265625" GridPane.columnIndex="1">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <Button disable="true" mnemonicParsing="false" prefHeight="28.0" prefWidth="123.0" text="Restore default" visible="false" GridPane.columnIndex="2">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                            <Image url="@Icons/Replay.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                </children>
+                            </GridPane>
+                            <Separator prefHeight="0.0" prefWidth="288.0">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></Separator>
+                        <GridPane prefHeight="31.0" prefWidth="373.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.5" minWidth="10.0" prefWidth="149.5" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="203.5" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oxalic acid treatment:" wrappingWidth="153.1259765625">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Text>
+                                <ToggleButton fx:id="OA_TreatmentTglBtn" maxHeight="25.0" maxWidth="40.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" onAction="#toggleBtnClicked" prefHeight="25.0" prefWidth="50.0" selected="true" text="On" GridPane.columnIndex="1">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ToggleButton>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </VBox.margin>
+                        </GridPane>
+                            <Label fx:id="OA_Warning" text="Warning." textFill="RED" visible="false">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                            <GridPane prefHeight="130.0" prefWidth="328.0" vgap="10.0">
+                                <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.5" minWidth="10.0" prefWidth="116.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="232.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                <RowConstraints maxHeight="80.0" minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="80.0" minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="80.0" minHeight="10.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                <Label text="Treatment day:" GridPane.valignment="CENTER" />
+                                <Label text="Treatment duration:" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                <Label text="Treatment efficiency:" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                <Slider fx:id="OA_TreatmentDurationSlider" majorTickUnit="1.0" max="5.0" maxWidth="200.0" min="2.0" minorTickCount="0" onDragDetected="#closeHand" onMouseReleased="#onSliderMvd" prefHeight="38.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets right="25.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Slider>
+                                <Slider fx:id="OA_TreatmentEfficiencySlider" majorTickUnit="10.0" max="75.0" maxWidth="200.0" minorTickCount="1" onDragDetected="#closeHand" onMouseReleased="#onSliderMvd" prefHeight="38.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin>
+                              </Slider>
+                                  <DatePicker fx:id="oxalicAcidTreatmentDay" onAction="#chooseDate_OA" prefHeight="25.0" prefWidth="200.0" promptText="dd.mm.yyyy" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></DatePicker>
+                              <Label text="days" textFill="#565454" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" right="5.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label text="\%" textFill="#565454" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets right="20.0" />
+                                 </GridPane.margin>
+                              </Label>
+                                </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" right="25.0" />
+                           </VBox.margin>
+                            </GridPane>
+                        </children>
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                    </VBox>
+                    <VBox layoutX="459.0" layoutY="392.0" prefHeight="260.0" prefWidth="411.0" style="-fx-border-color: #cdcdcd; -fx-border-radius: 10px; -fx-background-color: #f3f3f3; -fx-background-radius: 10px;">
+                        <children>
+                            <GridPane>
+                                <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="0.0" prefWidth="43.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="239.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="125.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Icons/Bee%20Swarm.png" />
+                                    </image>
+                                </ImageView>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Colony Options" wrappingWidth="127.6689453125" GridPane.columnIndex="1">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <Button disable="true" mnemonicParsing="false" text="Restore default" visible="false" GridPane.columnIndex="2">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                            <Image url="@Icons/Replay.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <opaqueInsets>
+                                        <Insets left="100.0" />
+                                    </opaqueInsets>
+                                </Button>
+                                </children>
+                            </GridPane>
+                            <Separator prefHeight="0.0" prefWidth="288.0">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></Separator>
+                            <GridPane prefHeight="115.0" prefWidth="394.0" vgap="10.0">
+                                <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="82.5" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.5" minWidth="10.0" prefWidth="271.5" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                <Label text="Initial bees:" />
+                                <Label prefHeight="39.0" prefWidth="83.0" text="Critical colony size in winter:" wrapText="true" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                <Slider fx:id="colonySlider" majorTickUnit="1000.0" max="10000.0" maxWidth="220.0" minorTickCount="5" onDragDetected="#closeHand" onMouseReleased="#onSliderMvd" prefHeight="53.0" prefWidth="220.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="4000.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="25.0" />
+                                 </GridPane.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                              </Slider>
+                                <TextField fx:id="initialBeesInput" maxWidth="200.0" onAction="#onNumBeesEntered" prefHeight="25.0" prefWidth="200.0" promptText="Enter number of bees at start" GridPane.columnIndex="1">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label text="bees" textFill="#565454" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets right="25.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                                </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                           </VBox.margin>
+                            </GridPane>
+                        </children>
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                    </VBox>
+                    <VBox layoutX="459.0" layoutY="30.0" prefHeight="345.0" prefWidth="411.0" style="-fx-border-color: #cdcdcd; -fx-border-radius: 10px; -fx-background-color: #f3f3f3; -fx-background-radius: 10px;">
+                        <children>
+                            <GridPane>
+                                <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="43.5" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="245.5" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="125.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Icons/Beehive.png" />
+                                    </image>
+                                </ImageView>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Harvesting Options" wrappingWidth="128.6689453125" GridPane.columnIndex="1">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <Button disable="true" mnemonicParsing="false" text="Restore default" visible="false" GridPane.columnIndex="2">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                            <Image url="@Icons/Replay.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                </children>
+                            </GridPane>
+                            <Separator prefHeight="0.0" prefWidth="288.0">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></Separator>
+                        <Pane>
+                           <VBox.margin>
+                              <Insets left="20.0" top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label fx:id="HarvestingDayWarning" text="Date has to be in 2023." textFill="RED" visible="false" />
+                           </children>
+                        </Pane>
+                            <GridPane prefHeight="225.0" prefWidth="353.0" vgap="10.0">
+                                <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="104.5" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="248.5" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                <Label prefHeight="42.0" prefWidth="105.0" text="Minimum honey before harvest:" wrapText="true" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                 <tooltip>
+                                    <Tooltip text="Minimum honey store of the colony that allows to harvest honey." />
+                                 </tooltip>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                                <Label text="Harvesting period:" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets top="5.0" />
+                                 </GridPane.margin></Label>
+                                <Label prefHeight="40.0" prefWidth="105.0" text="Remaining honey after harvest:" wrapText="true" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                 <tooltip>
+                                    <Tooltip text="Amount of honey that the beekeeper leaves in the colony when harvesting." />
+                                 </tooltip>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                                <Label text="Start harvesting:" />
+                                <Slider fx:id="harvestingSlider" blockIncrement="5.0" majorTickUnit="2.0" max="40.0" maxWidth="220.0" min="20.0" minorTickCount="1" onDragDetected="#closeHand" onMouseReleased="#onSliderMvd" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin>
+                              </Slider>
+                                <Slider fx:id="honeySlider" majorTickUnit="1.0" max="10.0" maxWidth="220.0" minorTickCount="0" onDragDetected="#closeHand" onMouseReleased="#onSliderMvd" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <GridPane.margin>
+                                    <Insets right="15.0" />
+                                 </GridPane.margin>
+                              </Slider>
+                              <Slider fx:id="harvestingPeriodSlider" majorTickUnit="20.0" max="230.0" maxWidth="220.0" min="20.0" minorTickCount="5" onDragDetected="#closeHand" onMouseReleased="#onSliderMvd" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="80.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <cursor>
+                                    <Cursor fx:constant="OPEN_HAND" />
+                                 </cursor>
+                                 <GridPane.margin>
+                                    <Insets right="25.0" />
+                                 </GridPane.margin>
+                              </Slider>
+                                <DatePicker fx:id="HarvestingDay" onAction="#chooseDate_HD" prefWidth="200.0" promptText="dd.mm.yyyy" showWeekNumbers="true" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></DatePicker>
+                              <Label text="days" textFill="#565454" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Label>
+                              <Label text="kg" textFill="#565454" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets right="15.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="kg" textFill="#565454" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets right="15.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Label>
+                                </children>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                            </GridPane>
+                        </children>
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                    </VBox>
+                </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

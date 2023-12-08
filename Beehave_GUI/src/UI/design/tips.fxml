@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane fitToWidth="true" prefViewportHeight="600.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.tipsController">
+   <content>
+      <AnchorPane prefHeight="1514.0" prefWidth="745.0" style="-fx-background-color: #fef5d9;">
+         <children>
+            <VBox layoutY="55.0" maxHeight="1471.0" prefHeight="1459.0" prefWidth="745.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+               <children>
+                  <Pane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="705.0" style="-fx-background-color: #343434; -fx-background-radius: 5px;">
+                     <children>
+                        <Text fill="WHITE" layoutX="314.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navigation">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Pane>
+                  <GridPane prefHeight="156.0" prefWidth="685.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="348.0" minWidth="10.0" prefWidth="224.5" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.5" minWidth="10.0" prefWidth="256.5" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="567.0" minWidth="10.0" prefWidth="212.5" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #bcb29b; -fx-background-radius: 5px;">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Bee.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="59.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Tab">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-background-color: #bcb29b; -fx-background-radius: 5px;" GridPane.columnIndex="1">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Financial%20Analytics.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="81.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics Tab">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-background-color: #bcb29b; -fx-background-radius: 5px;" GridPane.columnIndex="2">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Settings.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="62.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings Tab">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="1">
+                           <children>
+                              <Text layoutX="10.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This tab is the heart of BEEHAVE. Here the simulation takes place and the development of your fictional bee colony is shown  " wrappingWidth="190.4453125" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Text layoutX="13.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can compare the different colony and treatment settings you made in the setting tab. This way you can find out which treatment was helpful." wrappingWidth="217.9453125" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Text layoutX="8.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can test out different treatment settings and customize your bee colony." wrappingWidth="183.9453125" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Pane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <Pane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="705.0" style="-fx-background-color: #343434; -fx-background-radius: 5px;">
+                     <children>
+                        <Text fill="WHITE" layoutX="288.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Features Overview">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Pane>
+                  <GridPane prefHeight="578.0" prefWidth="685.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="457.5" minWidth="94.0" prefWidth="331.5" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="660.5" minWidth="10.0" prefWidth="354.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="70.0" minHeight="75.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="78.0" minHeight="75.0" prefHeight="78.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="69.0" minHeight="70.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="71.0" minHeight="70.0" prefHeight="46.5" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="95.0" minHeight="115.0" prefHeight="73.5" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="239.5" minHeight="160.0" prefHeight="111.5" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="199.0" minHeight="115.0" prefHeight="126.5" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;">
+                           <children>
+                              <Button layoutX="14.0" layoutY="19.0" minWidth="50.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="38.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Play.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Text layoutX="82.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Run the simulation. The graphs will then show in the charts." wrappingWidth="225.7734375" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane prefHeight="65.0" prefWidth="322.0" style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="1">
+                           <children>
+                              <Button layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Pause.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Text layoutX="80.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stop the simulation at any day you want. You can then look closer at the graphs." wrappingWidth="227.041015625" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <children>
+                              <Button layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false">
+                                 <tooltip>
+                                    <Tooltip text="Save last simulation run for comparison in Analytics Tab. " />
+                                 </tooltip>
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Save.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <VBox layoutX="81.0" layoutY="17.0" prefHeight="64.0" prefWidth="243.0" spacing="3.0">
+                                 <children>
+                                    <HBox spacing="3.0">
+                                       <children>
+                                          <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Icons/Bee.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Tab:" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Save the data from the last simulation." wrappingWidth="127.34375" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="3.0">
+                                       <children>
+                                          <ImageView fitHeight="25.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Icons/Settings.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings Tab:" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Save the settings you see right now in the tab." wrappingWidth="136.263671875" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <MenuButton layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Choose.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </MenuButton>
+                              <Text layoutX="82.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can choose the graphs you want to see in the charts." wrappingWidth="254.638671875" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Button layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Check%20All.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Show all graphs" />
+                                 </tooltip>
+                              </Button>
+                              <Text layoutX="83.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select all graphs to be visible in the chart." />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="2">
+                           <children>
+                              <Button layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Download%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as picture" />
+                                 </tooltip>
+                              </Button>
+                              <Text layoutX="83.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Download this graph as PNG." />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="5">
+                           <children>
+                              <TitledPane blendMode="SRC_ATOP" expanded="false" layoutX="15.0" layoutY="15.0" prefHeight="25.0" prefWidth="274.0" text="Overview table of current settings" />
+                              <Text layoutX="29.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on the small triangle to unfold a table, which shows you all the settings that are currently active in the model. The settings that are active will influence your simulation" wrappingWidth="263.443359375" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="3">
+                           <children>
+                              <Button layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Export%20CSV.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Download chart as picture" />
+                                 </tooltip>
+                              </Button>
+                              <Text layoutX="84.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Download this graph as CSV." />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane prefHeight="118.0" prefWidth="344.0" style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <children>
+                              <Button layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false" style="-fx-border-radius: 2px; -fx-border-color: #f08080;">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Remove.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <VBox layoutX="82.0" layoutY="14.05078125">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Icons/Bee.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Tab:" />
+                                       </children>
+                                    </HBox>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delete the simulation data that you previously saved. You will be asked to specify the name of the data. " wrappingWidth="242.34375" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="82.0" layoutY="95.0">
+                                 <children>
+                                    <HBox spacing="3.0">
+                                       <children>
+                                          <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Icons/Settings.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings Tab:" />
+                                       </children>
+                                    </HBox>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delete the setting that is currently active." wrappingWidth="224.599609375" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="6">
+                           <children>
+                              <SplitMenuButton layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="143.0" text="Compare data">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Compare.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </SplitMenuButton>
+                              <Text layoutX="16.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can choose the simulation data you want to compare. If it is empty, please run the simulation first." wrappingWidth="289.169921875" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <Button fx:id="refreshBtn1" alignment="TOP_CENTER" layoutX="15.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false" style="-fx-border-color: #f08080; -fx-border-radius: 2px;">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Delete%20Graph%20Report.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Clear this chart" />
+                                 </tooltip>
+                              </Button>
+                              <Text layoutX="82.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clear the displayed graphs. You can use this to compare different graphs. " wrappingWidth="228.34375" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="1">
+                           <children>
+                              <Button layoutX="14.0" layoutY="19.0" minWidth="50.0" mnemonicParsing="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icons/Repeat.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Text layoutX="82.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Refresh all graphs,  before you start a new one. This deletes all the graphs from you simulation." wrappingWidth="247.478515625" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="4">
+                           <children>
+                              <ComboBox fx:id="szenarioComboBox" layoutX="15.0" layoutY="15.0" minWidth="195.0" prefHeight="25.0" prefWidth="275.0" promptText="Choose from saved setttings">
+                                 <tooltip>
+                                    <Tooltip text="Currently active setting." />
+                                 </tooltip>
+                              </ComboBox>
+                              <Text layoutX="16.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can choose which of your previously saved settings should be active right now. " wrappingWidth="272.34375" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <Pane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="705.0" style="-fx-background-color: #343434; -fx-background-radius: 5px;">
+                     <children>
+                        <Text fill="WHITE" layoutX="279.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks and Workflows">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <GridPane prefHeight="392.0" prefWidth="705.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="215.0" prefWidth="201.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="41.5" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="215.0" prefWidth="220.5" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="31.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="215.0" prefWidth="211.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="320.0" minHeight="320.0" prefHeight="320.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane prefHeight="56.0" prefWidth="161.0" style="-fx-background-color: #bcb29b; -fx-background-radius: 5px;">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Settings.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="50.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings Tab">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane prefHeight="50.0" prefWidth="188.0" style="-fx-background-color: #bcb29b; -fx-background-radius: 5px;" GridPane.columnIndex="2">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Bee.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="59.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Tab">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #bcb29b; -fx-background-radius: 5px;" GridPane.columnIndex="4">
+                           <children>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Financial%20Analytics.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="60.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics Tab">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Pane>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@Icons/Arrow.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                           <image>
+                              <Image url="@Icons/Arrow.png" />
+                           </image>
+                        </ImageView>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <children>
+                              <VBox layoutX="11.0" layoutY="14.0" prefHeight="68.0" prefWidth="178.0" spacing="10.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1. Use the sliders and other input field to customize your bee colony." wrappingWidth="179.765625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. When you are finished save your setting with a descriptive and unique name. This will create a snapshot of all the settingsfields, which cannot be changed later on." wrappingWidth="176.51953125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3. You can now choose between your previously saved settings. The chosen setting is the one that will influence your simulation" wrappingWidth="182.734375" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Pane>
+                        <Pane prefHeight="291.0" prefWidth="205.0" style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <children>
+                              <VBox layoutX="15.0" layoutY="19.0" spacing="10.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1. Choose the number of days you want to simulate." wrappingWidth="178.69921875" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. Press play and observe the deveopment of your bee colony in the charts." wrappingWidth="179.09375" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3. Pause the simulation at any given time or wait till its finished." wrappingWidth="180.798828125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4. Save the simulation data with a descriptive and unique name." wrappingWidth="171.826171875" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5. Download the charts as pictures or csv file." wrappingWidth="177.30078125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6. Click the refresh button to start from scratch. Repeat this process as often as you want." wrappingWidth="178.1171875" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Pane>
+                        <Pane style="-fx-border-color: #858585; -fx-border-radius: 5px;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <children>
+                              <VBox layoutX="14.0" layoutY="14.05078125" spacing="10.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1. Choose at least 2 different simulation data sets that you saved earlier." wrappingWidth="167.07421875" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. Choose the graphs you want to compare in the Time Series Comparison Chart." wrappingWidth="176.068359375" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3. Click compare and see the differnces between your simulations." wrappingWidth="171.12890625" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4. Download the charts as pictures or csv files." wrappingWidth="182.267578125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5. Clear the charts to make a new comparison." wrappingWidth="178.84375" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Pane>
+                     </children>
+                  </GridPane>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+            <AnchorPane layoutY="-2.0" maxWidth="745.0" minHeight="-Infinity" prefHeight="55.0" prefWidth="745.0" style="-fx-background-color: #ffdf00;" AnchorPane.bottomAnchor="1458.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+               <children>
+                  <Text layoutX="320.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Guide" wrappingWidth="104.5078125" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.4921875">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

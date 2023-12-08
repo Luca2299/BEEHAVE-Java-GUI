@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="500.0" minWidth="500.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.Controller">
+   <children>
+      <TabPane layoutY="25.0" minHeight="400.0" minWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <tabs>
+          <Tab closable="false" style="-fx-pref-height: 30; -fx-pref-width: 110;" text="Simulation ">
+            <content>
+               <fx:include source="simulationResults.fxml" />
+            </content>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Bee.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Tab>
+            <Tab closable="false" style="-fx-pref-height: 30; -fx-pref-width: 110;" text="Analytics">
+               <content>
+                  <fx:include source="szenarioAnalytics.fxml" />
+               </content>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Financial%20Analytics.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Tab>
+            <Tab closable="false" style="-fx-pref-height: 30; -fx-pref-width: 110;" text="Settings">
+               <content>
+                  <fx:include source="customSettings.fxml" />
+               </content>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <MenuBar maxHeight="25.0" minHeight="20.0" minWidth="100.0" prefHeight="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Info">
+            <items>
+              <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#aboutMenuClicked" text="About" />
+            </items>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Info.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#tipsMenuClicked" text="Guide" />
+            </items>
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Help.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

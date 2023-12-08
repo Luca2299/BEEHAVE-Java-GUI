@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="109.0" prefWidth="234.0" style="-fx-border-radius: 10px; -fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.customSettingsController">
+   <children>
+      <Label fx:id="nameEmptyLabel" layoutX="15.0" layoutY="6.0" text="Please enter a valid name. " textFill="RED" visible="false" />
+      <TextField fx:id="nameTextfield" layoutX="21.0" layoutY="23.0" prefHeight="25.0" prefWidth="197.0" promptText="Enter settings name" />
+      <Button fx:id="saveOKBtn" layoutX="143.0" layoutY="67.0" mnemonicParsing="false" onAction="#onOKBtnClicked" prefHeight="25.0" prefWidth="74.0" text="OK">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="cancelBtn" layoutX="21.0" layoutY="67.0" mnemonicParsing="false" onAction="#onCancelBtnClicked" prefHeight="25.0" prefWidth="80.0" text="Cancel">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,2 @@
+timestep mitesHealthy	mitesInfected	droneBroodRemoval	miteReinvasion	formicAcid
+366	40	10	0	1	0

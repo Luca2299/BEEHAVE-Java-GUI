@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane maxHeight="400.0" maxWidth="400.0" minHeight="410.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #fef5d9;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.aboutController">
+   <children>
+      <Pane layoutX="2.0" prefHeight="55.0" prefWidth="400.0" style="-fx-background-color: #ffdf00;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="109.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About this software" wrappingWidth="182.5078125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TextFlow layoutX="121.0" layoutY="355.0" minWidth="160.0" prefHeight="24.0" prefWidth="158.0" AnchorPane.leftAnchor="121.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Visit the">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Hyperlink onAction="#linkClicked" text="BEEHAVE website">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Hyperlink>
+         </children>
+      </TextFlow>
+      <Text layoutX="22.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This Project was made by: " />
+      <Hyperlink layoutX="163.0" layoutY="65.0" onAction="#linkNameClicked" text="Luca Kristin Heyeckhaus">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Hyperlink>
+      <TextFlow layoutX="22.0" layoutY="96.0" prefHeight="23.0" prefWidth="320.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="as a bachelor thesis at " wrappingWidth="226.55078125" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="University Osnabrück ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="and in cooperation with the scientists from " wrappingWidth="235.70703125" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UFZ Helmholtz Centre for Environmental Research. ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </TextFlow>
+      <Text layoutX="22.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special thanks to:" />
+      <VBox layoutX="120.0" layoutY="154.0" prefHeight="55.0" prefWidth="124.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prof. Andreas Focks">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dr. Jürgen Groeneveld">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prof. Volker Grimm">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <ImageView fitHeight="48.0" fitWidth="117.0" layoutX="137.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="156.2587432861328">
+         <image>
+            <Image url="@Icons/BEEHAVE.png" />
+         </image>
+      </ImageView>
+      <TextFlow layoutX="52.0" layoutY="228.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="326.0" AnchorPane.leftAnchor="55.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="All Icons belong to " wrappingWidth="358.484375" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 Icons8 LLC ">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="and  are used under the " wrappingWidth="319.283203125" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Universal Multimedia License Agreement for Free Account Holders. ">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Visit the" />
+            <Hyperlink onAction="#linkIconsClicked" text="Icons8 website." />
+         </children>
+      </TextFlow>
+      <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="14.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="348.0">
+         <image>
+            <Image url="@Icons/Icons8.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="10.0" layoutY="216.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Text layoutX="64.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" © The University of Exeter, Matthias Becher 2013" wrappingWidth="271.17578125" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.82421875" />
+      <Separator layoutX="10.0" layoutY="296.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+   </children>
+</AnchorPane>

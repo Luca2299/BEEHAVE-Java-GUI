@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane style="-fx-background-color: #e5e5e5;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.simulationResultsController">
+    <children>
+        <ToolBar layoutX="-272.0" layoutY="-7.0" prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <ButtonBar buttonMinWidth="50.0" maxHeight="30.0" maxWidth="179.0" prefHeight="30.0" prefWidth="144.0">
+                <buttons>
+                    <Button fx:id="runModelBtn" mnemonicParsing="false" onAction="#onRunBtnClicked">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                <Image url="@Icons/Play.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Button>
+                    <Button fx:id="pauseBtn" disable="true" mnemonicParsing="false" onAction="#onBtnPauseClicked">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                <Image url="@Icons/Pause.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Button>
+                    <Button fx:id="refreshBtn" disable="true" mnemonicParsing="false" onAction="#onBtnRefreshClicked">
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                <Image url="@Icons/Repeat.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Button>
+                </buttons>
+                </ButtonBar>
+                <ButtonBar buttonMinWidth="40.0" maxHeight="50.0" maxWidth="170.0" prefHeight="40.0" prefWidth="80.0">
+                <buttons>
+                    <TextField fx:id="tickTextField" onAction="#getInputTicks" onKeyPressed="#enterPressed" text="10">
+                        <cursor>
+                            <Cursor fx:constant="TEXT" />
+                        </cursor>
+                     <tooltip>
+                        <Tooltip style="-fx-set-duration: 2s; -fx-set-delay: 0s;" text="Please enter a number between 1 and 8000." />
+                     </tooltip>
+                  </TextField>
+                </buttons>
+                </ButtonBar>
+              <Label fx:id="tickLabel" minWidth="42.0" prefHeight="17.0" text="Days">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <Button fx:id="saveDataBtn" disable="true" mnemonicParsing="false" onAction="#saveForComparison" text="Save simulation">
+               <tooltip>
+                  <Tooltip text="Save simulation data for future comparison in the Analytics tab." />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Icons/Save.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane prefHeight="40.0" prefWidth="300.0">
+               <children>
+                  <ProgressIndicator fx:id="savingProgressBar" layoutX="-1.0" layoutY="9.0" prefHeight="23.0" prefWidth="30.0" visible="false" />
+                  <Label fx:id="addedLabel" layoutY="12.0" text="Saved!" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            </items>
+        </ToolBar>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" layoutY="49.0" pannable="true" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+         <content>
+              <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="800.0" prefHeight="691.0" prefWidth="1200.0" style="-fx-background-color: #e5e5e5;">
+                  <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                  <RowConstraints maxHeight="435.5" minHeight="200.0" prefHeight="323.5" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="342.5" minHeight="100.0" prefHeight="339.5" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <children>
+                            <LineChart fx:id="mitePlot" animated="false" createSymbols="false" minHeight="100.0" minWidth="100.0" prefHeight="402.0" prefWidth="570.0" title="Mites" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <xAxis>
+                                <NumberAxis forceZeroInRange="false" label="Days" lowerBound="1.0" side="BOTTOM" fx:id="xAxisMites" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Reporter" side="LEFT" />
+                            </yAxis>
+                           <padding>
+                              <Insets bottom="5.0" right="10.0" top="15.0" />
+                           </padding>
+                            </LineChart>
+                        <Button layoutX="22.0" layoutY="12.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportMiteChartPNG" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Download%20Graph%20Report.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Download chart as picture" />
+                           </tooltip>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                            <Button fx:id="allVisible1" layoutX="475.0" layoutY="11.0" minWidth="50.0" mnemonicParsing="false" onAction="#allVisible" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="10.0">
+                                <cursor>
+                                <Cursor fx:constant="HAND" />
+                                </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Check%20All.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Show all graphs" />
+                           </tooltip>
+                            </Button>
+                            <MenuButton fx:id="graphSelector1" layoutX="453.0" layoutY="13.0" mnemonicParsing="false" onAction="#getChosenGraphs" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                            <items>
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="total mites" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="phoretic mites healthy" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="phoretic mites infected" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="mite fall x 10" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="mites in cells" />
+                            </items>
+                                <cursor>
+                                <Cursor fx:constant="HAND" />
+                                </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Choose.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Select graphs to display in the chart. Selected graphs will be visible, while unselected ones will remain hidden." />
+                           </tooltip>
+                            </MenuButton>
+                        <Button layoutX="488.0" layoutY="11.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportMiteChartCSV" AnchorPane.rightAnchor="65.0">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Export%20CSV.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Download chart as CSV file." />
+                           </tooltip>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                     <children>
+                            <LineChart fx:id="honeyPollenPlot" animated="false" createSymbols="false" minHeight="50.0" minWidth="50.0" prefHeight="402.0" prefWidth="570.0" title="Honey &amp; Pollen " AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <xAxis>
+                                <NumberAxis forceZeroInRange="false" label="Days" lowerBound="1.0" side="BOTTOM" tickMarkVisible="false" fx:id="xAxisHoney" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Reporter" side="LEFT">
+                                    <tickLabelFont>
+                                        <Font size="10.0" />
+                                    </tickLabelFont>
+                                </NumberAxis>
+                            </yAxis>
+                           <padding>
+                              <Insets bottom="5.0" right="10.0" top="15.0" />
+                           </padding>
+                            </LineChart>
+                        <Button fx:id="allVisible3" layoutX="475.0" layoutY="12.0" minWidth="50.0" mnemonicParsing="false" onAction="#allVisible" visible="false" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="12.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Check%20All.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Show all graphs" />
+                           </tooltip>
+                        </Button>
+                        <MenuButton fx:id="graphSelector3" layoutX="444.0" layoutY="13.0" mnemonicParsing="false" onAction="#getChosenGraphs" visible="false" AnchorPane.leftAnchor="10.0">
+                           <items>
+                              <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="pollen [kg] x 20" />
+                              <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="honey store [kg] " />
+                           </items>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Choose.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Select graphs to display in the chart. Selected graphs will be visible, while unselected ones will remain hidden." />
+                           </tooltip>
+                        </MenuButton>
+                        <Button layoutX="32.0" layoutY="22.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportHoneyChartPNG" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Download%20Graph%20Report.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Download chart as picture" />
+                           </tooltip>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="488.0" layoutY="11.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportHoneyChartCSV" AnchorPane.rightAnchor="65.0">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Export%20CSV.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Download chart as CSV file." />
+                           </tooltip>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;" GridPane.columnIndex="1">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </GridPane.margin>
+                     <children>
+                            <LineChart fx:id="colonyStructurePlot" animated="false" createSymbols="false" layoutX="1.0" layoutY="1.0" prefHeight="402.0" prefWidth="570.0" title="Colony Structure" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                            <xAxis>
+                                <NumberAxis forceZeroInRange="false" label="Days" lowerBound="1.0" side="BOTTOM" fx:id="xAxisColony" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Reporter" side="LEFT" />
+                            </yAxis>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" right="10.0" top="15.0" />
+                           </padding>
+                            </LineChart>
+                            <Button fx:id="allVisible2" layoutX="81.0" layoutY="13.0" minWidth="50.0" mnemonicParsing="false" onAction="#allVisible" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="10.0">
+                                <cursor>
+                                <Cursor fx:constant="HAND" />
+                                </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Check%20All.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Show all graphs" />
+                           </tooltip>
+                            </Button>
+                            <MenuButton fx:id="graphSelector2" layoutX="23.0" layoutY="12.0" mnemonicParsing="false" onAction="#getChosenGraphs" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                <items>
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="eggs" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="larvae" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="in hive bees" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="foragers" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="workers" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="brood" />
+                                <CheckMenuItem mnemonicParsing="false" onAction="#getChosenGraphs" selected="true" text="infected bees" />
+                                </items>
+                                <cursor>
+                                <Cursor fx:constant="HAND" />
+                                </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Choose.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Select graphs to display in the chart. Selected graphs will be visible, while unselected ones will remain hidden." />
+                           </tooltip>
+                            </MenuButton>
+                        <Button layoutX="529.0" layoutY="15.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportColonyChartPNG" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Download%20Graph%20Report.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Download chart as picture" />
+                           </tooltip>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="489.0" layoutY="11.0" minWidth="50.0" mnemonicParsing="false" onAction="#exportColonyChartCSV" AnchorPane.rightAnchor="65.0">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Export%20CSV.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Download chart as CSV file." />
+                           </tooltip>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="190.0" prefWidth="198.5" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="408.0" minWidth="10.0" prefWidth="391.5" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane minHeight="100.0" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #cbdabb; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;" GridPane.columnIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="30.0" />
+                           </GridPane.margin>
+                           <children>
+                              <Text layoutX="144.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Foraging Map" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                                  <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="105.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                      <Image url="@Icons/Bee%20Swarm.png" />
+                                      </image>
+                                  </ImageView>
+                                  <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="162.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                      <Image url="@Icons/Beehive90px.png" />
+                                      </image>
+                                  </ImageView>
+                                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="296.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                      <Image url="@Icons/Pollen.png" />
+                                      </image>
+                                  </ImageView>
+                                  <ImageView fitHeight="50.0" fitWidth="30.0" layoutX="34.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                      <Image url="@Icons/Pollen.png" />
+                                      </image>
+                                  </ImageView>
+                              <Text fill="#797575" layoutX="16.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Source" />
+                              <Text fill="#797575" layoutX="279.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Source" />
+                              <Text fill="#797575" layoutX="170.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beehive" />
+                              <Text fill="#797575" layoutX="91.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bee colony" />
+                              <Line endX="71.0" endY="-27.0" layoutX="91.0" layoutY="175.0" startX="-27.0" startY="67.0" stroke="#797575" />
+                              <Line endX="52.0" endY="-1.5" layoutX="237.0" layoutY="94.0" startX="-17.0" startY="34.0" stroke="#797575" />
+                              <Text fill="#797575" layoutX="80.0" layoutY="206.0" rotate="-43.2" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance: 1500" wrappingWidth="79.99999999999997" />
+                              <Text fill="#797575" layoutX="211.0" layoutY="107.0" rotate="-24.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance 500" />
+                           </children>
+                        </AnchorPane>
+                        <GridPane prefHeight="342.0" prefWidth="157.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="172.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="70.0" minWidth="100.0" prefHeight="75.0" prefWidth="190.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;">
+                                 <children>
+                                    <Label layoutX="34.0" layoutY="14.0" text="Healthy foragers">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator layoutX="10.0" layoutY="35.0" prefHeight="5.0" prefWidth="163.0" />
+                                    <Label fx:id="foragersLabel" alignment="TOP_CENTER" layoutX="65.0" layoutY="38.0" text="100%" textFill="#53bf25">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Pane>
+                              <Pane maxHeight="120.0" maxWidth="190.0" minHeight="70.0" minWidth="100.0" prefHeight="76.0" prefWidth="190.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label layoutX="47.0" layoutY="14.0" text="Healthy mites">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator layoutX="10.0" layoutY="35.0" prefHeight="5.0" prefWidth="163.0" />
+                                    <Label fx:id="mitesLabel" layoutX="63.0" layoutY="38.0" text="100%" textFill="#bd4326">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Pane>
+                              <Pane maxHeight="120.0" maxWidth="190.0" minHeight="70.0" minWidth="100.0" prefHeight="70.0" prefWidth="190.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label layoutX="52.0" layoutY="14.0" text="Pollen store">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator layoutX="10.0" layoutY="35.0" prefHeight="5.0" prefWidth="163.0" />
+                                    <Label fx:id="pollenLabel" alignment="TOP_CENTER" layoutX="63.0" layoutY="38.0" text="100%" textFill="#d5b200">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Pane>
+                              <Pane maxHeight="120.0" maxWidth="190.0" minHeight="70.0" minWidth="100.0" prefHeight="70.0" prefWidth="190.0" style="-fx-background-color: #f3f3f3; -fx-background-radius: 10px; -fx-border-color: #cdcdcd; -fx-border-radius: 10px;" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label layoutX="56.0" layoutY="14.0" text="Work load">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator layoutX="10.0" layoutY="35.0" prefHeight="5.0" prefWidth="163.0" />
+                                    <Label fx:id="workLoadLabel" alignment="TOP_CENTER" layoutX="64.0" layoutY="38.0" text="100%" textFill="#1360e6">
+                                       <font>
+                                          <Font name="System Bold" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </GridPane.margin>
+                              </Pane>
+                           </children>
+                        </GridPane>
+                        <TitledPane blendMode="SRC_ATOP" expanded="false" onMouseClicked="#refreshTable" text="Overview of current settings" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                           <content>
+                              <TableView fx:id="tableSim">
+                                 <columns>
+                                    <TableColumn maxWidth="300.0" minWidth="100.0" prefWidth="180.0" sortable="false" text="Variable" />
+                                    <TableColumn maxWidth="300.0" minWidth="100.0" prefWidth="150.0" sortable="false" text="Value" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </content>
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </TitledPane>
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#refreshTable" text="Refresh" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets right="10.0" />
+                           </GridPane.margin>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/Replay.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  </children>
+                  <padding>
+                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <opaqueInsets>
+                      <Insets top="10.0" />
+                  </opaqueInsets>
+              </GridPane>
+         </content>
+      </ScrollPane>
+        </children>
+    </AnchorPane>
