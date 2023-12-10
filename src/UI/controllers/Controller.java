@@ -22,9 +22,9 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            pathtoProject = new File(".").getCanonicalPath();
+            pathtoProject = new File(".").toURI().toString();
             pathtoIcons = pathtoProject + "\\src\\UI\\design\\Icons";
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(pathtoIcons + "Path to Icons folder could not be found.");
             e.printStackTrace();
         } 

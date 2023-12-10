@@ -230,9 +230,9 @@ public class simulationResultsController implements Initializable {
      @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            pathtoProject = new File(".").getCanonicalPath();
+            pathtoProject = new File(".").toURI().toString();
             pathOfLogo =  pathtoProject + "\\src\\UI\\design\\Icons\\BEEHAVE-Logo.png";
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(pathOfLogo + " This is not the right path to the Logo.");
             e.printStackTrace();
         }

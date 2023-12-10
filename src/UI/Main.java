@@ -34,7 +34,8 @@ public class Main extends Application {
     @Override
     public void start(final Stage primaryStage) throws IOException {
         try {
-            pathtoProject = new File(".").getCanonicalPath();
+            pathtoProject = new File(".").toURI().toString();
+            System.out.println(pathtoProject);
             pathOfLogo =  pathtoProject + "\\src\\UI\\design\\Icons\\BEEHAVE-Logo.png";
         } catch (Exception e) {
              System.out.println(pathOfLogo + "This is not the right path to the Logo.");
