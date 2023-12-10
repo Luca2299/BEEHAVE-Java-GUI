@@ -12,8 +12,6 @@
         "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx.web.jar",
         "c:\\Program Files\\JavaFX\\javafx-sdk-20.0.1\\lib\\javafx-swt.jar",
         "c:\\Program Files\\NetLogo 6.2.2\\app\\netlogo-6.2.2.jar",
-        "c:\\Users\\krist\\Downloads\\jfxtras-all-10.0-r1.jar",
-        "c:\\Users\\krist\\Downloads\\controlsfx-11.1.2.jar"
     ],
     "java.checkstyle.configuration": "/sun_checks.xml"
 }
