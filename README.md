@@ -14,6 +14,12 @@ The necessary paths need to be added/adjusted.
 For this you can follow the steps in [`JavaFx`'s official documentation](https://openjfx.io/openjfx-docs/#IDE-VSCode) under section 4 **"Create and update launch configurations"**.
 The only missing part is adding the path to `Netlogo` (`Netlogo6.2.2/app/netlogo.jar`) to the `settings.json` just like with `JavaFx`.
 
+# Troubleshooting
+If you get an error when launching the application from `VSCode`'s _Run & Debug_ menu like `UI.Main not found`, you might need to re-add the `Main` class to `VSCode`'s _Java Projects_ (Underneath the _Explorer_ when a `.java` file is opened).
+
+Simply add the necessary `File`s and/or `Folder`s next to the `+` next to `BEEHAVE-Java-GUI`.
+![Alt text](troubleshooting.png)
+
 -------------------
 # Known issues
 ### Breaking issues
