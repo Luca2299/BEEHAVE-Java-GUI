@@ -14,3 +14,12 @@ Die Pfade dort müssen angepasst werden.
 Dafür kann den Schritten in [`JavaFx`'s official documentation](https://openjfx.io/openjfx-docs/#IDE-VSCode) unter Abschnitt 4 **Create and update launch configurations** gefolgt werden.
 Nun fehlt nur noch das Hinzufügen des Pfades von `Netlogo` (`Netlogo6.2.2/app/netlogo.jar`) zu der `settings.json` genauso wie bei `JavaFx`.
 
+------------------------
+# Known issues
+### Breaking issues
+- ``Time Comparison Chart``: Nach einem Refresh werden manchmal keine Graphen mehr angezeigt. 
+- In den **Kalenderfeldern** können auch unpassende Daten eingegeben werden (Wörter oder Zahlen nicht im Datumsformat). Dies sorgt dann dafür dass das BEEHAVE-Modell nicht ordnungsgemäß funktioniert.
+### Non-breaking issues
+- Bei `Initial Bees`können auch Kommazahlen (`double`) eigegeben werden. Die Simulation wird dadurch nicht beinträchtigt. 
+- Mehrere `Settings` dürfen mit identischem Namen abgespeichert werden. Die Einstellungen werden nicht überschrieben, sondern sind nur nicht auseinanderhaltbar.
+
